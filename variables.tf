@@ -2,8 +2,14 @@ variable "cidr_block" {
     default = "10.0.0.0/16"
 }
 
-variable "vpc_tags" {
-    default = {
-        Name = "roboshop-dev"
-    }
+variable "project_name" {
+    default = ""
+}
+
+variable "environment" {
+    default= ""
+}
+
+variable "enable_dns_hostnames" {
+    default = true
 }
