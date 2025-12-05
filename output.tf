@@ -3,5 +3,5 @@ output "vpc_id" {
 }
 
 output "azs" {
-    value = data.aws_availability_zone.azs.id
+    value = data.aws_availability_zones.azs.id
 }
