@@ -33,4 +33,8 @@ variable "public_subnet_cidr" {
 
    
 }
+variable "public_subnet_tags" {
+    type = map 
+    default = {}
+}
 
