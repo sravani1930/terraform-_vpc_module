@@ -12,3 +12,12 @@ resource "aws_vpc" "main" {
   )
 }
 
+resource "aws_subnet" "public" {
+  count = length(slice(output.azs,0,2))
+  vpc_id     = output.vpc_id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "Main"
+  }
+}
