@@ -7,16 +7,12 @@ terraform {
   }
 }
 
-
-terraform {
   backend "s3" {
     bucket = "devopsify-remote-state"
     key    = "vpc"
     region = "us-east-1"
     dynamodb_table = "devopsify-locking"
   }
-}
-
 
 provider "aws" {
   # Configuration options
