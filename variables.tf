@@ -13,3 +13,13 @@ variable "environment" {
 variable "enable_dns_hostnames" {
     default = true
 }
+
+varaible "common_tags" {
+    type = map
+    default = {}
+}
+
+variable "vpc_tags" {
+    type = map
+    default = {}
+}
