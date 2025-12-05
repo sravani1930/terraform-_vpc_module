@@ -13,7 +13,7 @@ terraform {
     bucket = "devopsify-remote-state"
     key    = "vpc"
     region = "us-east-1"
-    dynamodb = "devopsify-locking"
+    dynamodb_table = "devopsify-locking"
   }
 }
 
