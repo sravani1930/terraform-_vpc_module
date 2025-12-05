@@ -24,3 +24,13 @@ variable "vpc_tags" {
     default = {}
 }
 
+variable "public_subnet_cidr" {
+    type = list 
+    validation {
+    condition     = length(var.public_subnet_cidr) == 2
+    error_message = "The list must contain exactly 2 elements."
+  }
+
+   
+}
+
