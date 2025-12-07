@@ -103,6 +103,6 @@ variable "acceptor_vpc_id" {
     default = ""
 }
 
-variable "peering_tags" {
-    default = ""
+variable "vpc_peering_tags" {
+    default = {}
 }

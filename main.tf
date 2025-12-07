@@ -54,6 +54,14 @@ resource "aws_subnet" "database" {
   )
 }
 
+resource "aws_db_subnet_group" "default" {
+  name       = "${local.name}"
+  subnet_ids = aws_subnet.database[*].id
+
+  tags = {
+    Name = "${local.name}"
+  }
+}
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.main.id
 
@@ -156,3 +164,18 @@ resource "aws_route_table_association" "database" {
   subnet_id      = element(aws_subnet.database[*].id, count.index)
   route_table_id = aws_route_table.database.id
 }
+
+resource "aws_vpc_peering_connection" "peering" {
+  count = var.is_peering_required ? 0 : 1
+  vpc_id        = aws_vpc.main.id
+  peer_vpc_id   = var.acceptor_vpc_id == "" ? data.aws_vpc.default.id : var.acceptor_vpc_id
+  auto_accept   = var.acceptor_vpc_id == "" ? true : false
+  tags =  merge(
+         var.common_tags,
+         var.vpc_peering_tags,
+         {
+            Name = "${local.name}"
+         }
+  )
+}
+
